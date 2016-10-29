@@ -1,7 +1,6 @@
 import QtQuick 2.7
 import QtQuick.Window 2.2
 import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.1
 import "script/weather.js" as Weather
 
 ApplicationWindow {
@@ -10,70 +9,35 @@ ApplicationWindow {
     height: 480
     title: qsTr("Weather")
 
-    Image {
-        id: background
-        source: "qrc:/image/rain.jpg"
+    SwipeView {
+        id: swipeView
+        currentIndex: 0
+        anchors.fill: parent
+
+        PageOneDay {
+
+        }
+
+        Page2Test {
+
+        }
     }
 
-    /* Title */
-    Text {
-        id: city
-        text: qsTr("Lublin,")
-        font.family: "AvantGarde LT ExtraLight"
-        font.bold: true
-        font.pointSize: 22
-        x: 10
-        y: 10
-        color: "white"
-    }
+    PageIndicator {
+        id: indicator
+        count: swipeView.count
+        currentIndex: swipeView.currentIndex
+        anchors.bottom: swipeView.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
 
-    /* Country */
-    Text {
-        id: country
-        text: qsTr("Poland")
-        font.family: "AvantGarde LT ExtraLight"
-        font.pointSize: 22
-        anchors.left: city.right
-        anchors.leftMargin: 5
-        anchors.verticalCenter: city.verticalCenter
-        color: "white"
-    }
-
-    /* Temperature */
-    RowLayout {
-        id: layout
-        anchors.top: city.bottom
-        anchors.left: city.left
-        //width: parent.width
-
-        Text {
-            id: temperature
-            text: "24°"
-            font.family: "AvantGarde LT ExtraLight"
-            font.pointSize: 28
+        delegate: Rectangle {
+            implicitWidth: 8
+            implicitHeight: 8
+            radius: width / 2
             color: "white"
+            opacity: index === swipeView.currentIndex ? 0.95 : pressed ? 0.7 : 0.45
+            Behavior on opacity { OpacityAnimator { duration: 100 } }
         }
-
-        ColumnLayout {
-            //anchors.left: parent.right
-            Text { text: "H 52.97"; font.family: "AvantGarde LT ExtraLight"; color: "white"; font.bold: true }
-            Text { text: "L 48.23"; font.family: "AvantGarde LT ExtraLight"; color: "white"; font.bold: true }
-        }
-    }
-
-    /* Description */
-    Text {
-        id: description
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l"
-        wrapMode: Text.Wrap
-        horizontalAlignment: Text.AlignLeft
-        font.family: "AvantGarde LT ExtraLight"
-        font.pointSize: 11
-        color: "white"
-        anchors.top: layout.bottom
-        anchors.left: city.left
-        anchors.right: parent.right
-        anchors.rightMargin: 10
     }
 
 //    Button {
