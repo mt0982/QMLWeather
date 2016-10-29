@@ -1,6 +1,7 @@
 //https://openweathermap.org/forecast5
 //http://doc.qt.io/qt-5/qtcharts-qmlweather-qml-qmlweather-main-qml.html
 ///https://openweathermap.org/weather-data
+//http://www.hongkiat.com/blog/weather-app-design/
 
 function getData() {
     var weatherAppKey = "f23961cb493d52dbd56fd0d656b3a396";
