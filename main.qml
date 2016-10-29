@@ -10,7 +10,7 @@ ApplicationWindow {
     title: qsTr("Weather")
 
     Component.onCompleted: {
-        Weather.setCityName("Tokyo")
+        Weather.setCityName("Lublin")
         Weather.parseJSON()
     }
 
@@ -49,7 +49,7 @@ ApplicationWindow {
         interval: 5000
         running: true
         repeat: true
-        onTriggered: console.log("A")
+        onTriggered: console.log("Time triggered: " + new Date())
     }
 }
 

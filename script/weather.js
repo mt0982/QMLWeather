@@ -2,6 +2,7 @@
 //http://doc.qt.io/qt-5/qtcharts-qmlweather-qml-qmlweather-main-qml.html
 ///https://openweathermap.org/weather-data
 //http://www.hongkiat.com/blog/weather-app-design/
+//https://openweathermap.org/current
 
 var city;
 
@@ -37,21 +38,28 @@ function parseWeatherData(weatherData) {
     var temp_min = weatherData.main.temp_min - 272.15;
     var temp_max = weatherData.main.temp_max - 272.15;
     var wind_speed = weatherData.wind.speed;                //m/sec
+    var wind_direction = weatherData.wind.deg;              //angle
     var clouds = weatherData.clouds.all;                    //%
     var pressure = weatherData.main.pressure;               //hpa
     var humidity = weatherData.main.humidity;               //%
     var longitude = weatherData.coord.lon;
     var latitude = weatherData.coord.lat;
     var country = weatherData.sys.country;
+    var description = weatherData.weather[0].description;
+    var weathericon = weatherData.weather[0].icon;
 
     console.log("Country: " + country + "\n" +
                 "Temp: " + temp.toPrecision(4) + "\n" +
                 "Wind: " + wind_speed + "m/s\n" +
+                "Wind: " + wind_direction + "deg\n" +
                 "Cloudiness: " + clouds + "%\n" +
                 "Pressure: " + pressure + "Hpa\n" +
                 "Humidity: " + humidity + "%\n" +
                 "Longitude: " + longitude + "\n" +
-                "Latitude: " + latitude + "\n")
+                "Latitude: " + latitude + "\n" +
+                "Description: " + description + "\n")
+
+    oneDayForecast.weathericon = "http://openweathermap.org/img/w/" + weathericon + ".png"
 
     /* Set Output Data */
     oneDayForecast.cityName = city;
@@ -69,7 +77,6 @@ function parseWeatherData(weatherData) {
 //    var minutes = "0" + date.getMinutes();
 //    var seconds = "0" + date.getSeconds();
 //    var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-
 //    console.log(formattedTime)
 }
 

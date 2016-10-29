@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
+import QtGraphicalEffects 1.0
 
 Item {
 
@@ -13,6 +14,7 @@ Item {
     property real cityLongitude: -99
     property real cityPressure: -99
     property real cityWindSpeed: -99
+    property string weathericon: ""
 
     /* Content */
     Image {
@@ -128,6 +130,27 @@ Item {
             color: "white"
         }
     }
+
+    /* Weather Icon */
+    Image {
+        id: wico
+        source: weathericon
+        anchors.left: parent.left
+        anchors.leftMargin: 10
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 10
+        visible: false
+    }
+
+    DropShadow {
+          anchors.fill: wico
+          horizontalOffset: 3
+          verticalOffset: 3
+          radius: 8.0
+          samples: 17
+          color: "black"
+          source: wico
+      }
 }
 
 
