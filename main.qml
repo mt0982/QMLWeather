@@ -10,7 +10,7 @@ ApplicationWindow {
     title: qsTr("Weather")
 
     Component.onCompleted: {
-        Weather.setCityName("Lublin")
+        Weather.setCityName("Mexico")
         Weather.parseJSON()
     }
 
@@ -43,13 +43,6 @@ ApplicationWindow {
             opacity: index === swipeView.currentIndex ? 0.95 : pressed ? 0.7 : 0.45
             Behavior on opacity { OpacityAnimator { duration: 100 } }
         }
-    }
-
-    Timer {
-        interval: 5000
-        running: true
-        repeat: true
-        onTriggered: console.log("Time triggered: " + new Date())
     }
 }
 

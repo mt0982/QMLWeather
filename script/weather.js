@@ -59,8 +59,6 @@ function parseWeatherData(weatherData) {
                 "Latitude: " + latitude + "\n" +
                 "Description: " + description + "\n")
 
-    oneDayForecast.weathericon = "http://openweathermap.org/img/w/" + weathericon + ".png"
-
     /* Set Output Data */
     oneDayForecast.cityName = city;
     oneDayForecast.countryName = country;
@@ -71,6 +69,7 @@ function parseWeatherData(weatherData) {
     oneDayForecast.cityLongitude = longitude;
     oneDayForecast.cityWindSpeed = wind_speed;
     oneDayForecast.cityPressure = pressure;
+    oneDayForecast.weathericon = "http://openweathermap.org/img/w/" + weathericon + ".png"
 
 //    var date = new Date(weatherData.dt*1000);
 //    var hours = date.getHours();

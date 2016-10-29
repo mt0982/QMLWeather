@@ -1,6 +1,8 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import QtGraphicalEffects 1.0
+import QtQuick.Controls 2.0
+import "script/weather.js" as Weather
 
 Item {
 
@@ -151,6 +153,42 @@ Item {
           color: "black"
           source: wico
       }
+
+    /* Busy Indicator */
+    BusyIndicator {
+        id: busyIndicator
+        anchors.right: parent.right
+        anchors.rightMargin: 10
+        anchors.top: parent.top
+        anchors.topMargin: 10
+        width: 32
+        height: 32
+        opacity: 0.0
+
+        Behavior on opacity { NumberAnimation { duration: 2000 } }
+    }
+
+    /* Refresh By Double Tap */
+    MouseArea {
+        anchors.fill: parent
+        onDoubleClicked: {
+            timer.start()
+            busyIndicator.opacity = 1.0
+            console.log("\nUpdated")
+            Weather.setCityName("Mexico")
+            Weather.parseJSON()
+        }
+    }
+
+    Timer {
+        id: timer
+        interval: 5000
+        running: true
+        onTriggered: {
+            console.log("Refresh time: " + new Date())
+            busyIndicator.opacity = 0.0
+        }
+    }
 }
 
 
