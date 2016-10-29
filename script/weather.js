@@ -3,12 +3,18 @@
 ///https://openweathermap.org/weather-data
 //http://www.hongkiat.com/blog/weather-app-design/
 
+var city;
+
+function setCityName(name) {
+    city = name;
+}
+
 function parseJSON() {
     var weatherAppKey = "f23961cb493d52dbd56fd0d656b3a396";
 
     if (weatherAppKey != "") {
         var xhr = new XMLHttpRequest;
-        xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=" + weatherAppKey);
+        xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + weatherAppKey);
 
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -36,8 +42,10 @@ function parseWeatherData(weatherData) {
     var humidity = weatherData.main.humidity;               //%
     var longitude = weatherData.coord.lon;
     var latitude = weatherData.coord.lat;
+    var country = weatherData.sys.country;
 
-    console.log("Temp: " + temp.toPrecision(4) + "\n" +
+    console.log("Country: " + country + "\n" +
+                "Temp: " + temp.toPrecision(4) + "\n" +
                 "Wind: " + wind_speed + "m/s\n" +
                 "Cloudiness: " + clouds + "%\n" +
                 "Pressure: " + pressure + "Hpa\n" +
@@ -46,11 +54,15 @@ function parseWeatherData(weatherData) {
                 "Latitude: " + latitude + "\n")
 
     /* Set Output Data */
+    oneDayForecast.cityName = city;
+    oneDayForecast.countryName = country;
     oneDayForecast.cityTemperature = temp.toPrecision(4);
     oneDayForecast.cityHumidity = humidity;
     oneDayForecast.cityCloudiness = clouds;
     oneDayForecast.cityLatitude = latitude;
     oneDayForecast.cityLongitude = longitude;
+    oneDayForecast.cityWindSpeed = wind_speed;
+    oneDayForecast.cityPressure = pressure;
 
 //    var date = new Date(weatherData.dt*1000);
 //    var hours = date.getHours();

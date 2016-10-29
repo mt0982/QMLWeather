@@ -4,13 +4,15 @@ import QtQuick.Layouts 1.1
 Item {
 
     /* Properties */
-    property string cityName: "Lublin,"
-    property string countryName: "Poland"
+    property string cityName: "-------"
+    property string countryName: "--------"
     property real cityTemperature: -99
     property real cityHumidity: -99
     property real cityCloudiness: -99
     property real cityLatitude: -99
     property real cityLongitude: -99
+    property real cityPressure: -99
+    property real cityWindSpeed: -99
 
     /* Content */
     Image {
@@ -21,7 +23,7 @@ Item {
     /* Title */
     Text {
         id: city
-        text: cityName
+        text: cityName + ","
         font.family: "AvantGarde LT ExtraLight"
         font.bold: true
         font.pointSize: 22
@@ -81,6 +83,7 @@ Item {
 
     /* Humidity | Cloudiness */
     RowLayout {
+        id: firstRow
         anchors.top: description.bottom
         anchors.left: city.left
         anchors.topMargin: 10
@@ -94,6 +97,7 @@ Item {
         }
 
         Text {
+            Layout.leftMargin: 28
             text: "Cloudiness \n" + cityCloudiness + "%"
             font.family: "AvantGarde LT ExtraLight"
             font.pointSize: 12
@@ -101,4 +105,46 @@ Item {
             color: "white"
         }
     }
+
+    /* Wind | Pressure */
+    RowLayout {
+        anchors.top: firstRow.bottom
+        anchors.left: city.left
+        anchors.topMargin: 10
+
+        Text {
+            text: "Wind Speed \n" + cityWindSpeed + "m/s"
+            font.family: "AvantGarde LT ExtraLight"
+            font.pointSize: 12
+            font.bold: true
+            color: "white"
+        }
+
+        Text {
+            text: "Pressure \n" + cityPressure + " hpa"
+            font.family: "AvantGarde LT ExtraLight"
+            font.pointSize: 12
+            font.bold: true
+            color: "white"
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

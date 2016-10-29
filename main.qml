@@ -9,6 +9,11 @@ ApplicationWindow {
     height: 480
     title: qsTr("Weather")
 
+    Component.onCompleted: {
+        Weather.setCityName("Tokyo")
+        Weather.parseJSON()
+    }
+
     SwipeView {
         id: swipeView
         currentIndex: 0
@@ -40,19 +45,12 @@ ApplicationWindow {
         }
     }
 
-    Button {
-        width: 64
-        height: 64
-        //anchors.centerIn: parent
-        onClicked: Weather.parseJSON()
+    Timer {
+        interval: 5000
+        running: true
+        repeat: true
+        onTriggered: console.log("A")
     }
-
-//    Timer {
-//        interval: 5000
-//        running: true
-//        repeat: true
-//        onTriggered: console.log("A")
-//    }
 }
 
 
