@@ -2,6 +2,17 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.1
 
 Item {
+
+    /* Properties */
+    property string cityName: "Lublin,"
+    property string countryName: "Poland"
+    property real cityTemperature: -99
+    property real cityHumidity: -99
+    property real cityCloudiness: -99
+    property real cityLatitude: -99
+    property real cityLongitude: -99
+
+    /* Content */
     Image {
         id: background
         source: "qrc:/image/rain.jpg"
@@ -10,7 +21,7 @@ Item {
     /* Title */
     Text {
         id: city
-        text: qsTr("Lublin,")
+        text: cityName
         font.family: "AvantGarde LT ExtraLight"
         font.bold: true
         font.pointSize: 22
@@ -22,7 +33,7 @@ Item {
     /* Country */
     Text {
         id: country
-        text: qsTr("Poland")
+        text: countryName
         font.family: "AvantGarde LT ExtraLight"
         font.pointSize: 22
         anchors.left: city.right
@@ -31,7 +42,7 @@ Item {
         color: "white"
     }
 
-    /* Temperature */
+    /* Temperature | Lat | Lon */
     RowLayout {
         id: layout
         anchors.top: city.bottom
@@ -40,7 +51,7 @@ Item {
 
         Text {
             id: temperature
-            text: "24°"
+            text: cityTemperature + "°"
             font.family: "AvantGarde LT ExtraLight"
             font.pointSize: 28
             color: "white"
@@ -48,8 +59,8 @@ Item {
 
         ColumnLayout {
             //anchors.left: parent.right
-            Text { text: "H 52.97"; font.family: "AvantGarde LT ExtraLight"; color: "white"; font.bold: true }
-            Text { text: "L 48.23"; font.family: "AvantGarde LT ExtraLight"; color: "white"; font.bold: true }
+            Text { text: "H  " + cityLatitude; font.family: "AvantGarde LT ExtraLight"; color: "white"; font.bold: true }
+            Text { text: "L  " + cityLongitude; font.family: "AvantGarde LT ExtraLight"; color: "white"; font.bold: true }
         }
     }
 
@@ -68,13 +79,14 @@ Item {
         anchors.rightMargin: 10
     }
 
+    /* Humidity | Cloudiness */
     RowLayout {
         anchors.top: description.bottom
         anchors.left: city.left
         anchors.topMargin: 10
 
         Text {
-            text: "Humidity \n89%"
+            text: "Humidity \n" + cityHumidity + "%"
             font.family: "AvantGarde LT ExtraLight"
             font.pointSize: 12
             font.bold: true
@@ -82,7 +94,7 @@ Item {
         }
 
         Text {
-            text: "Cloudiness \n24%"
+            text: "Cloudiness \n" + cityCloudiness + "%"
             font.family: "AvantGarde LT ExtraLight"
             font.pointSize: 12
             font.bold: true

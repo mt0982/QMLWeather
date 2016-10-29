@@ -15,7 +15,7 @@ ApplicationWindow {
         anchors.fill: parent
 
         PageOneDay {
-
+            id: oneDayForecast
         }
 
         Page2Test {
@@ -40,11 +40,18 @@ ApplicationWindow {
         }
     }
 
-//    Button {
-//        width: 64
-//        height: 64
-//        //anchors.centerIn: parent
-//        onClicked: Weather.getData()
+    Button {
+        width: 64
+        height: 64
+        //anchors.centerIn: parent
+        onClicked: Weather.parseJSON()
+    }
+
+//    Timer {
+//        interval: 5000
+//        running: true
+//        repeat: true
+//        onTriggered: console.log("A")
 //    }
 }
 
