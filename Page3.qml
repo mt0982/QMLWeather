@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtGraphicalEffects 1.0
 import "script/weather.js" as Weather
 import "chart"
 
@@ -20,16 +21,39 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: "#e64a3c"
+        color: "#6680B5"
     }
 
     Text {
+        id: title
         y: 15
         text: cityName + ", " + countryName
         font.family: "BahamasLight"
         font.pointSize: 24
         anchors.horizontalCenter: parent.horizontalCenter
         color: "#ffffff"
+    }
+
+    /* Page Logo */
+    Image {
+        id: logo
+        source: "qrc:/image/clouds.png"
+        fillMode: Image.PreserveAspectFit
+        anchors.top: title.bottom
+        anchors.topMargin: 30
+        anchors.horizontalCenter: parent.horizontalCenter
+        smooth: true
+        visible: false
+    }
+
+    DropShadow {
+        anchors.fill: logo
+        horizontalOffset: 3
+        verticalOffset: 3
+        radius: 8.0
+        samples: 17
+        color: "#80000000"
+        source: logo
     }
 
     CustomChart {
@@ -39,3 +63,6 @@ Item {
         height: parent.height
     }
 }
+
+
+
