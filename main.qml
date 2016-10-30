@@ -23,7 +23,7 @@ ApplicationWindow {
         currentIndex: 0
         anchors.fill: parent
 
-        PageOneDay {  id: oneDayForecast }
+        Page1 {  id: oneDayForecast }
         Page2 { id: temperaturePage }
         Page3 { id: cloudsPage }
         Page4 { id: pressurePage }
