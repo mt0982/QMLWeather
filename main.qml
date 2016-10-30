@@ -9,7 +9,7 @@ ApplicationWindow {
     width: 269
     height: 480
     title: qsTr("Weather")
-    color: "transparent"
+    //color: "transparent"
 
     Component.onCompleted: {
         Weather.setCityName("Lublin")
@@ -21,13 +21,11 @@ ApplicationWindow {
         currentIndex: 0
         anchors.fill: parent
 
-        PageOneDay {
-            id: oneDayForecast
-        }
-
-        Page2Test {
-
-        }
+        PageOneDay {  id: oneDayForecast }
+        Page2 { id: temperaturePage }
+        Page3 { id: cloudsPage }
+        Page4 { id: pressurePage }
+        Page5 { id: windPage}
     }
 
     PageIndicator {

@@ -222,6 +222,7 @@ Item {
                 onClicked: {
                     Weather.setCityName(fieldCityName.text)
                     Weather.parseJSON()
+                    Weather.parseJSONForecast()
                 }
 
                 Image {

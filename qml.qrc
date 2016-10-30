@@ -4,7 +4,6 @@
         <file>script/weather.js</file>
         <file>image/rain.jpg</file>
         <file>PageOneDay.qml</file>
-        <file>Page2Test.qml</file>
         <file>gesture/Swipe.qml</file>
         <file>image/search.png</file>
         <file>image/rain2.jpg</file>
@@ -13,5 +12,10 @@
         <file>image/sky.jpg</file>
         <file>image/snow.jpg</file>
         <file>image/sunny.jpg</file>
+        <file>chart/CustomChart.qml</file>
+        <file>Page2.qml</file>
+        <file>Page3.qml</file>
+        <file>Page4.qml</file>
+        <file>Page5.qml</file>
     </qresource>
 </RCC>
