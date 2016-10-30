@@ -16,6 +16,8 @@ ApplicationWindow {
         Weather.parseJSON()
     }
 
+    property int position: 0
+
     SwipeView {
         id: swipeView
         currentIndex: 0
@@ -26,6 +28,8 @@ ApplicationWindow {
         Page3 { id: cloudsPage }
         Page4 { id: pressurePage }
         Page5 { id: windPage}
+
+        onCurrentItemChanged: currentItem.z = ++position
     }
 
     PageIndicator {
