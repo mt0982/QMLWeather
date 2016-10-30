@@ -28,8 +28,6 @@ ApplicationWindow {
         Page2Test {
 
         }
-
-        //transform: Translate { x: drawer.position * swipeView.width * 0.66 }
     }
 
     PageIndicator {

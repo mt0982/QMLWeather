@@ -23,7 +23,9 @@ Item {
     /* Content */
     Image {
         id: background
-        source: "qrc:/image/rain.jpg"
+        source: "qrc:/image/autumn.jpg"
+        anchors.fill: parent
+        fillMode: Image.PreserveAspectCrop
     }
 
     /* Title */
@@ -59,7 +61,7 @@ Item {
 
         Text {
             id: temperature
-            text: cityTemperature + "°"
+            text: cityTemperature.toFixed(2) + "°"
             font.family: "AvantGarde LT ExtraLight"
             font.pointSize: 28
             color: "white"
@@ -212,7 +214,6 @@ Item {
 
             ToolButton {
                 id: btnSearch
-                text: "S"
                 anchors.right: parent.right
                 anchors.rightMargin: 5
                 anchors.verticalCenter: parent.verticalCenter
@@ -222,12 +223,17 @@ Item {
                     Weather.setCityName(fieldCityName.text)
                     Weather.parseJSON()
                 }
+
+                Image {
+                    anchors.fill: parent
+                    source: "qrc:/image/search.png"
+                }
             }
         }
     }
 
     transform: Translate {
-        //y: drawer.position * drawer.height
+        y: drawer.position * drawer.height
     }
 
     Gesture.Swipe {

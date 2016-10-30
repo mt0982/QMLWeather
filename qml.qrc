@@ -6,5 +6,12 @@
         <file>PageOneDay.qml</file>
         <file>Page2Test.qml</file>
         <file>gesture/Swipe.qml</file>
+        <file>image/search.png</file>
+        <file>image/rain2.jpg</file>
+        <file>image/autumn.jpg</file>
+        <file>image/lightning.jpg</file>
+        <file>image/sky.jpg</file>
+        <file>image/snow.jpg</file>
+        <file>image/sunny.jpg</file>
     </qresource>
 </RCC>
