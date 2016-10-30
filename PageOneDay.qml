@@ -2,9 +2,11 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import QtGraphicalEffects 1.0
 import QtQuick.Controls 2.0
+import "gesture" as Gesture
 import "script/weather.js" as Weather
 
 Item {
+    id: content
 
     /* Properties */
     property string cityName: "-------"
@@ -75,8 +77,8 @@ Item {
         id: description
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l"
         wrapMode: Text.Wrap
-        horizontalAlignment: Text.AlignLeft
         font.family: "AvantGarde LT ExtraLight"
+        horizontalAlignment: Text.AlignJustify
         font.pointSize: 11
         color: "white"
         anchors.top: layout.bottom
@@ -117,7 +119,7 @@ Item {
         anchors.topMargin: 10
 
         Text {
-            text: "Wind Speed \n" + cityWindSpeed + "m/s"
+            text: "Wind Speed \n" + (cityWindSpeed * 3.6).toFixed(2) + " km/h"
             font.family: "AvantGarde LT ExtraLight"
             font.pointSize: 12
             font.bold: true
@@ -175,7 +177,7 @@ Item {
             timer.start()
             busyIndicator.opacity = 1.0
             console.log("\nUpdated")
-            Weather.setCityName("Mexico")
+            Weather.setCityName(cityName)
             Weather.parseJSON()
         }
     }
@@ -188,6 +190,49 @@ Item {
             console.log("Refresh time: " + new Date())
             busyIndicator.opacity = 0.0
         }
+    }
+
+    /* Serch Field */
+    Drawer {
+        id: drawer
+        width: parent.width
+        edge: Qt.TopEdge
+        height: 40
+
+        RowLayout {
+            anchors.fill: parent
+
+            TextField {
+                id: fieldCityName
+                placeholderText: qsTr("City name")
+                anchors.left: parent.left
+                anchors.leftMargin: 5
+                anchors.right: btnSearch.left
+            }
+
+            ToolButton {
+                id: btnSearch
+                text: "S"
+                anchors.right: parent.right
+                anchors.rightMargin: 5
+                anchors.verticalCenter: parent.verticalCenter
+                implicitHeight: 35
+                implicitWidth: 35
+                onClicked: {
+                    Weather.setCityName(fieldCityName.text)
+                    Weather.parseJSON()
+                }
+            }
+        }
+    }
+
+    transform: Translate {
+        //y: drawer.position * drawer.height
+    }
+
+    Gesture.Swipe {
+        width: parent.width
+        height: 100
     }
 }
 

@@ -1,6 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Window 2.2
 import QtQuick.Controls 2.0
+import QtGraphicalEffects 1.0
 import "script/weather.js" as Weather
 
 ApplicationWindow {
@@ -8,9 +9,10 @@ ApplicationWindow {
     width: 269
     height: 480
     title: qsTr("Weather")
+    color: "transparent"
 
     Component.onCompleted: {
-        Weather.setCityName("Mexico")
+        Weather.setCityName("Lublin")
         Weather.parseJSON()
     }
 
@@ -26,6 +28,8 @@ ApplicationWindow {
         Page2Test {
 
         }
+
+        //transform: Translate { x: drawer.position * swipeView.width * 0.66 }
     }
 
     PageIndicator {
