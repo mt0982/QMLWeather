@@ -34,7 +34,7 @@ function parseJSON() {
 
 function parseWeatherData(weatherData) {
 
-    var temp = weatherData.main.temp - 272.15;
+    var temp = weatherData.main.temp - 273.15;
     var temp_min = weatherData.main.temp_min - 272.15;
     var temp_max = weatherData.main.temp_max - 272.15;
     var wind_speed = weatherData.wind.speed;                //m/sec
@@ -124,7 +124,7 @@ function parseWeatherDataForecast(weatherData) {
     var windMax = -5000;
 
     for(var i = 0; i < weatherData.cnt; i++) {
-        var temperature = (weatherData.list[i].main.temp - 272.15).toFixed(2);
+        var temperature = (weatherData.list[i].main.temp - 273.15).toFixed(2);
         var pressure = (weatherData.list[i].main.pressure).toFixed(2);
         var clouds = weatherData.list[i].clouds.all;
         var wind = weatherData.list[i].wind.speed;
