@@ -16,6 +16,7 @@ ApplicationWindow {
 
     Component.onCompleted: {
         swipeView.itemAt(0).inc()
+        swipeView.itemAt(1).dec()
         Weather.setCityName("Lublin")
         Weather.parseJSON()
     }
