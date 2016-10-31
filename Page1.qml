@@ -8,6 +8,11 @@ import "script/weather.js" as Weather
 Item {
     id: content
 
+    function inc() { content.scale = 1.0 }
+    function dec() { content.scale = 0.9 }
+
+    Behavior on scale { NumberAnimation { duration: 2000 } }
+
     /* Properties */
     property string cityName: "-------"
     property string countryName: "--------"

@@ -21,5 +21,6 @@
         <file>image/temperature.png</file>
         <file>image/wind.png</file>
         <file>image/pressure.png</file>
+        <file>Page0.qml</file>
     </qresource>
 </RCC>

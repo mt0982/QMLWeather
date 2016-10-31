@@ -9,9 +9,9 @@ ApplicationWindow {
     width: 269
     height: 480
     title: qsTr("Weather")
-    //color: "transparent"
 
     Component.onCompleted: {
+        swipeView.itemAt(0).inc()
         Weather.setCityName("Lublin")
         Weather.parseJSON()
     }
@@ -23,13 +23,28 @@ ApplicationWindow {
         currentIndex: 0
         anchors.fill: parent
 
-        Page1 {  id: oneDayForecast }
+        Page1 { id: oneDayForecast }
         Page2 { id: temperaturePage }
         Page3 { id: cloudsPage }
         Page4 { id: pressurePage }
         Page5 { id: windPage}
 
-        onCurrentItemChanged: currentItem.z = ++position
+        onCurrentItemChanged: {
+            currentItem.z = ++position
+            currentItem.inc();
+
+            for(var index = 0; index < swipeView.count; index++) {
+                if(swipeView.itemAt(index) !== currentItem) swipeView.itemAt(index).dec();
+            }
+        }
+    }
+
+    DropShadow {
+        anchors.fill: swipeView
+        radius: 12.0
+        samples: 17
+        color: "#80000000"
+        source: swipeView
     }
 
     PageIndicator {
@@ -48,6 +63,8 @@ ApplicationWindow {
             Behavior on opacity { OpacityAnimator { duration: 100 } }
         }
     }
+
+    Page0 { anchors.fill: parent }
 }
 
 
