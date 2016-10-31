@@ -22,5 +22,6 @@
         <file>image/wind.png</file>
         <file>image/pressure.png</file>
         <file>Page0.qml</file>
+        <file>image/splash.gif</file>
     </qresource>
 </RCC>

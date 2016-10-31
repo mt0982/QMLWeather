@@ -31,7 +31,7 @@ Item {
 
         AnimatedImage {
             id: animation
-            source: "file:///home/asus/Programy/Qt/Projekty/QMLCustomizeSwipeView/splash2.gif"
+            source: "qrc:/image/splash.gif"
             anchors.centerIn: parent
             fillMode: AnimatedImage.PreserveAspectCrop
             width: parent.width * 0.5
