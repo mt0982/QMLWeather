@@ -13,12 +13,14 @@ ApplicationWindow {
 
     Material.background: Material.BlueGrey
     Material.accent: "white"
+    FontLoader { id: fixedFont; name: "AvantGarde LT ExtraLight" }
 
     Component.onCompleted: {
         swipeView.itemAt(0).inc()
         swipeView.itemAt(1).dec()
         Weather.setCityName("Lublin")
         Weather.parseJSON()
+        console.log(Qt.fontFamilies())
     }
 
     SwipeView {

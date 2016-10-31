@@ -45,8 +45,7 @@ Item {
         id: logo
         source: "qrc:/image/wind.png"
         fillMode: Image.PreserveAspectFit
-        anchors.top: title.bottom
-        anchors.topMargin: 30
+        y: parent.height * 0.25
         anchors.horizontalCenter: parent.horizontalCenter
         smooth: true
         visible: false

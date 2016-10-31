@@ -205,7 +205,7 @@ Item {
         id: drawer
         width: parent.width
         edge: Qt.TopEdge
-        height: 40
+        height: parent.height * 0.15
 
         RowLayout {
             anchors.fill: parent
@@ -218,15 +218,20 @@ Item {
                 anchors.right: btnSearch.left
                 font.family: "AvantGarde LT ExtraLight"
                 Material.accent: Material.Indigo
+                //anchors.top: btnSearch.top
+                //anchors.bottom: btnSearch.bottom
+                implicitHeight: btnSearch.height
             }
 
             ToolButton {
                 id: btnSearch
                 anchors.right: parent.right
                 anchors.rightMargin: 5
-                anchors.verticalCenter: parent.verticalCenter
-                implicitHeight: 35
-                implicitWidth: 35
+                //anchors.bottom: parent.bottom
+                //anchors.bottomMargin: 5
+                //anchors.verticalCenter: parent.verticalCenter
+                implicitHeight: parent.height - 10
+                implicitWidth: parent.height - 10
                 onClicked: {
                     Weather.setCityName(fieldCityName.text)
                     Weather.parseJSON()
