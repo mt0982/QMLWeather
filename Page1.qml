@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import QtGraphicalEffects 1.0
 import QtQuick.Controls 2.0
+import QtQuick.Controls.Material 2.0
 import "gesture" as Gesture
 import "script/weather.js" as Weather
 
@@ -215,6 +216,8 @@ Item {
                 anchors.left: parent.left
                 anchors.leftMargin: 5
                 anchors.right: btnSearch.left
+                font.family: "AvantGarde LT ExtraLight"
+                Material.accent: Material.Indigo
             }
 
             ToolButton {

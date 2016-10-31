@@ -2,6 +2,7 @@ import QtQuick 2.7
 import QtQuick.Window 2.2
 import QtQuick.Controls 2.0
 import QtGraphicalEffects 1.0
+import QtQuick.Controls.Material 2.0
 import "script/weather.js" as Weather
 
 ApplicationWindow {
@@ -9,6 +10,8 @@ ApplicationWindow {
     width: 269
     height: 480
     title: qsTr("Weather")
+
+    Material.background: Material.BlueGrey
 
     Component.onCompleted: {
         swipeView.itemAt(0).inc()
