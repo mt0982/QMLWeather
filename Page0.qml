@@ -137,7 +137,7 @@ Item {
         repeat: true
         onTriggered: {
             if(control.value == 1.0) root.opacity = 0.0
-            else if(control.value + 0.02 <= 1.1) control.value += 0.02
+            else if(control.value + 0.0325 <= 1.1) control.value += 0.0325
         }
     }
 }
