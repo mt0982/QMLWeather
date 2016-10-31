@@ -12,14 +12,13 @@ ApplicationWindow {
     title: qsTr("Weather")
 
     Material.background: Material.BlueGrey
+    Material.accent: "white"
 
     Component.onCompleted: {
         swipeView.itemAt(0).inc()
         Weather.setCityName("Lublin")
         Weather.parseJSON()
     }
-
-    property int position: 0
 
     SwipeView {
         id: swipeView
@@ -33,7 +32,6 @@ ApplicationWindow {
         Page5 { id: windPage}
 
         onCurrentItemChanged: {
-            currentItem.z = ++position
             currentItem.inc();
 
             for(var index = 0; index < swipeView.count; index++) {

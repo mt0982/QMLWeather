@@ -16,6 +16,7 @@ Item {
         contentWidth: parent.width * 5.0
         contentHeight: parent.height
         boundsBehavior: Flickable.StopAtBounds
+        clip: true
 
         ChartView {
             id: chart
